@@ -1,0 +1,13 @@
+long long power(long long base,long long index){
+    long long temp;
+    if(index==0){
+        return 1;
+    }
+    temp=power(base,index/2);
+    if(index%2==0){
+        return temp*temp;
+    }
+    else{
+        return temp*temp*base;
+    }
+}
