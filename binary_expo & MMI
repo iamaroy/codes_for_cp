@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int M=1e9+7;
+//this code is to find powers%M using recursion;
+//max capacity of base or index 1e9
+int binexpoRec(int base,int index){
+    if(index==0){
+        return 1;
+    }
+    int res=binexpoRec(base,index/2);
+    if(index&1){
+        return (base*((res*1LL*res)%M))%M;
+    }
+    else{
+        return (res*1LL*res)%M;
+    }
+}
+//this code is to find powers%M using iteration;
+//max capacity of base or index 1e9
+//* iterative method is better than recursive
+int binexpIt(int base,int index){
+    int ans=1;
+    while(index>0){
+        if(index&1){
+            ans=(ans*1LL*base)%M;
+        }
+        base=(base*1LL*base)%M;
+        index=(index>>1);
+    }
+    return ans;
+}
+//finding MMI i.e. modular multipicative inverse of A under M
+int MMI_binexpoIt(int base,int index,int mod){
+    int ans=1;
+    while(index){
+        if(index&1){
+            ans=(ans*1LL*base)%mod;
+        }
+        base=(base*1LL*base)%mod;
+        index=(index>>1);
+    }
+    return ans;
+}
+int main(){
+    cout<<binexpoRec(2,3)<<endl;
+    cout<<binexpIt(2,3)<<endl;
+    cout<<MMI_binexpoIt(2,3,M)<<endl;
+return 0;
+}
