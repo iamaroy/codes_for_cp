@@ -30,7 +30,7 @@ int binexpIt(int base,int index){
     return ans;
 }
 //finding MMI i.e. modular multipicative inverse of A under M
-int MMI_binexpoIt(int base,int index,int mod){
+int MMI_binexpoIt(int base,int index,int mod){ // index to be passed is always M-2
     int ans=1;
     while(index){
         if(index&1){
